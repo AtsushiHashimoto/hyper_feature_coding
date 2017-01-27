@@ -1,10 +1,12 @@
 # License
 - [BSD 2-Clause License](https://github.com/AtsushiHashimoto/hyper_feature_coding/blob/master/LICENSE)
+
 # Install
     % pip install git+https://github.com/AtsushiHashimoto/hyper_feature_coding.git
 
 # Sample Code
 - [sample.py (Combination with Spectral Clustering)](https://github.com/AtsushiHashimoto/hyper_feature_coding/blob/master/examples/sample.py)
+
 # Reference
 - Hyper-feature coding for 1D data (Action Clustering, this project is imitation of this work).
         @inproceedings{songunsupervised,
