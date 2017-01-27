@@ -9,6 +9,7 @@
 
 # Reference
 - Hyper-feature coding for 1D data (Action Clustering, this project is imitation of this work).
+
         @inproceedings{songunsupervised,
             title={Unsupervised Alignment of Actions in Video with Text Descriptions},
             author={Song, Young Chol and Naim, Iftekhar and Al Mamun, Abdullah and Kulkarni, Kaustubh and Singla, Parag and Luo, Jiebo and Gildea, Daniel and Kautz, Henry},
