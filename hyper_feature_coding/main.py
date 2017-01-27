@@ -43,7 +43,7 @@ class BlockCoder():
 
     def make_histogram(self,sub_array,bins):
         hist,bin_edges = np.histogram(sub_array,bins,density=True)
-        return hist
+        return hist/sum(hist)
 
     def make_affinity_mat(self,X):
         if self.metric == Metric.intersect:
