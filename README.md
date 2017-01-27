@@ -8,7 +8,7 @@
 - [sample.py (Combination with Spectral Clustering)](https://github.com/AtsushiHashimoto/hyper_feature_coding/blob/master/examples/sample.py)
 
 # Reference
-- Hyper-feature coding for 1D data (Action Clustering, this project is imitation of this work).
+- Hyper-feature coding for 1D data (Action Clustering, this project is a partial imitate of this work).
 
         @inproceedings{songunsupervised,
             title={Unsupervised Alignment of Actions in Video with Text Descriptions},
