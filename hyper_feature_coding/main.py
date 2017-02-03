@@ -2,6 +2,7 @@
 from enum import Enum
 from sklearn.metrics.pairwise import check_pairwise_arrays
 import numpy as np
+import gc
 
 class Metric(Enum):
     #correl = 1
@@ -43,7 +44,9 @@ class BlockCoder():
 
     def make_histogram(self,sub_array,bins):
         hist,bin_edges = np.histogram(sub_array,bins,density=True)
-        return hist/sum(hist)
+        hist =  hist/sum(hist)
+        del bin_edges
+        return hist
 
     def make_affinity_mat(self,X):
         if self.metric == Metric.intersect:
@@ -51,7 +54,11 @@ class BlockCoder():
         return 0 #assert(isinstance(self.metric, Metric), "metric other than intersect has not been implemented yet.")
 
     def do_clustering(self,X):
-        return self.clustering_model.fit_predict(X)
+        labels = self.clustering_model.fit_predict(X)
+        del self.clustering_model.affinity_matrix_
+        del X
+        gc.collect()
+        return labels
 
 def flatten(arr):
     return [x for y in arr for x in y]
