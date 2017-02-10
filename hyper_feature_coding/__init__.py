@@ -4,5 +4,5 @@
 from .main import *
 
 __author__  = 'AtsushiHashimoto'
-__version__ = '0.0.1' 
+__version__ = '0.1.1' 
 __license__ = 'BSD 2-Clause License.'

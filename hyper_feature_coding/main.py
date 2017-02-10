@@ -65,17 +65,22 @@ def flatten(arr):
 
 
 class HyperFeatureCoder():
-    def __init__(self, window_sizes, clustering_models, metrics=None):
+    def __init__(self, window_sizes, clustering_models, metrics=None, initial_clustering_model=None):
         self.block_coders = [\
             BlockCoder(ws,cm,m)
             for (ws,cm,m) in zip(window_sizes,clustering_models,metrics)]
         self.depth = len(self.block_coders)
+        self.initial_clustering_model = initial_clustering_model
 
     def window_size_on_orig_data(self,d):
         return np.prod([self.block_coders[i].window_size for i in range(0,d+1)])
 
-    def fit_predict(self,orig_labels):
+    def fit_predict(self,X):
         labels_tmp = []
+        if self.initial_clustering_model:
+            orig_labels = self.initial_clustering_model.fit_predict(X)
+        else:
+            orig_labels = X
         prev_labels = orig_labels
         for (i,block_coder) in enumerate(self.block_coders):
             prev_labels = block_coder.proc(prev_labels)
@@ -88,4 +93,6 @@ class HyperFeatureCoder():
         labels = [ flatten( \
                         [ [l]*self.window_size_on_orig_data(i) for l in ls ] \
                        )[0:length] for (i,ls) in enumerate(labels_tmp)]
+        if self.initial_clustering_model:
+            labels.insert(0, orig_labels)
         return labels
